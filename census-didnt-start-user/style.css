@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Merriweather', serif;
+    overflow: hidden;
+
+}
+body{
+    margin: 0;
+    padding: 0;
+    border:3vw solid #faf0dc;
+    background-color: #0B4141;
+}
+
+
+h3{
+    color:#C52126;
+    text-align: center;
+    font-size: 3vw;
+    margin-top:7vw;
+    margin-left:-4vw;
+}
+.woman{
+    width:22vw;
+    position: absolute;
+    top:4vw;
+    right:5vw;
+    z-index: -1;
+}
+p{
+    font-size: 2vw;
+    text-align: end;
+    font-style: italic;
+    font-weight: 400;
+    width:50vw;
+    margin:5vw 0 5vw 20vw;
+    color: #faf0dc;
+
+}
+button{
+    font-size: 1.2vw;
+    width:18vw;
+    height:5vw;
+    padding: 1.5vw;
+    margin:2vw 14vw 2vw;
+    background-color: #C7d0d8;
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    font-style: italic;
+    
+}
