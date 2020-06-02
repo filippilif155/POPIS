@@ -28,7 +28,7 @@ if(isset($_POST['jmbg']) || isset($_POST['jmbg-0'])){
                     $html_errors = "<span>Već ste popisani! Ukoliko je došlo do greške kontaktirajte admina klikom <a href='#'>ovdje</a></span>";
                     $hidden = "";
                 }else{
-                    $_SESSION["jmbg"] = $jmgb;
+                    $_SESSION['jmbg'] = $jmgb;
                     header('Location: ../census-individual');
                 }
             }
