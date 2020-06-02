@@ -1,7 +1,7 @@
 <?php
     session_start();
+    $hidden = "hidden";
     if(isset($_POST['submit'])){ 
-        $hidden = "hidden";
         $conn = mysqli_connect('localhost', 'root', '', 'baza_popis');
         if ($conn) {
             $username = stripcslashes($_POST["user"]);
