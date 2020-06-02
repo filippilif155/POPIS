@@ -1,3 +1,8 @@
+<?php 
+    session_start();
+    print_r($_SESSION["jmbg-array"]);
+    session_destroy();
+?>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
