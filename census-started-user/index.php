@@ -21,14 +21,15 @@ if(isset($_POST['jmbg']) || isset($_POST['jmbg-0'])){
             $result = mysqli_query($conn, $sql);
             $row = mysqli_fetch_row($result);
             if($row){
+                $_SESSION["jmbg"] = '';
                 if(is_null($row[3])){
                     $html_errors = "<span>Da bi radili popis stanovništva prvo morate popisati svoje domaćinstvo!</span>";
-                    $hidden = ""; 
+                    $hidden = "";
                 }elseif(!is_null($row[4])){
                     $html_errors = "<span>Već ste popisani! Ukoliko je došlo do greške kontaktirajte admina klikom <a href='#'>ovdje</a></span>";
                     $hidden = "";
                 }else{
-                    $_SESSION['jmbg'] = $jmgb;
+                    $_SESSION['jmbg'] = $jmbg;
                     header('Location: ../census-individual');
                 }
             }
@@ -37,7 +38,7 @@ if(isset($_POST['jmbg']) || isset($_POST['jmbg-0'])){
             $for_error = 0;
             for($i = 0; $i < $num; $i++){
                 $str_current = "jmbg-{$i}";
-                for($j = $i - 1; $j > 0; $j--){
+                for($j = $i - 1; $j > 1; $j--){
                     $str_chck = "jmbg-{$j}";
                     if($_POST[$str_current] === $_POST[$str_chck]){
                         $html_errors = "<span>Vaš unos sadrži duplikate!<br></span>";
