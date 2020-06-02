@@ -37,10 +37,10 @@ if(isset($_POST['jmbg']) || isset($_POST['jmbg-0'])){
             $for_error = 0;
             for($i = 0; $i < $num; $i++){
                 $str_current = "jmbg-{$i}";
-                for($j = $i - 1; $j > 0; $j++){
+                for($j = $i - 1; $j > 0; $j--){
                     $str_chck = "jmbg-{$j}";
                     if($_POST[$str_current] === $_POST[$str_chck]){
-                        $html_errors = "<span>Vaš unos sadrži duplikate!</span>";
+                        $html_errors = "<span>Vaš unos sadrži duplikate!<br></span>";
                         $for_error = 1;
                         break;
                     }
