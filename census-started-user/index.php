@@ -23,7 +23,7 @@ if(isset($_POST['jmbg']) || isset($_POST['jmbg-0'])){
             if($row){
                 if(is_null($row[3])){
                     $html_errors = "<span>Da bi radili popis stanovništva prvo morate popisati svoje domaćinstvo!</span>";
-                    $hidden = "";
+                    $hidden = ""; 
                 }elseif(!is_null($row[4])){
                     $html_errors = "<span>Već ste popisani! Ukoliko je došlo do greške kontaktirajte admina klikom <a href='#'>ovdje</a></span>";
                     $hidden = "";
