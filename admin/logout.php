@@ -1,6 +1,6 @@
 <?php
-session_start();
-print_r($_SESSION);
-
+    session_start();
+    session_destroy();
+    header('Location: ../home/index.php');
 
 ?>

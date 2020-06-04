@@ -21,10 +21,20 @@
     }else {
         die("Connection failed: " . mysqli_connect_error());
     }
-
+    if(isset($_SESSION['post_response'])){
+        if($_SESSION['post_response'] === 2){
+            echo "postoji pod tim imenom";
+        }elseif($_SESSION['post_response'] === 3){
+            echo "Popis je u toku";            
+        }
+        else{
+            echo "Upisan";            
+        }
+    }
     //echo $str;
 
     //session_destroy();
+    mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,7 +59,7 @@
         </nav>
     </header>
 
-    <form>
+    <form action="logout.php" method="POST">
         <input type="submit" name="submit" value="Odjavi se" class="logout">
     </form>
 
@@ -105,7 +115,7 @@
     
     
     <div class="container hidden" id="census-div">
-        <form class="form">
+        <form class="form" action="post_census.php" method="POST">
             <label for="census-name">Unesite ime popisa: </label>
             <input type="text" name="census-name" id="census-name" class="census-name"  minlength="3" maxlength="15" required> 
             <label for="date">Unesite rok popisa: </label>
