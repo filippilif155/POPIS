@@ -24,7 +24,7 @@
         $result = mysqli_query($conn, $sql);
         $list = mysqli_fetch_all($result);
         for($i = 0; $i < count($list); $i++){
-            
+
             if($list[$i][4] === 'domacinstvo'){
                 $request = "DOMAĆINSTVO";
             }elseif($list[$i][4] === 'individualno'){
