@@ -1,5 +1,8 @@
 <?php
     session_start();
+    require '../trigger/trigger.php';
+    $alert_popis = "";
+    $notifications = "";
     if($_SESSION['username']){
         $str = $_SESSION['username'];
     }else{
@@ -11,25 +14,47 @@
     if ($conn) {
         $sql = "SELECT * FROM popisi WHERE status=1";
         $result = mysqli_query($conn, $sql);
-        $popis = mysqli_fetch_row($result)[0];
-        if(!$popis){
+        $popis = mysqli_fetch_row($result);
+        if($popis){
             $active = "disabled";
             $html_heading = "Popis nije u toku!";
-        }else{
-            //pass
         }
+        $ntfc_name = $popis[0]."_obavjestenja";
+        $sql = "SELECT * FROM {$ntfc_name}";
+        $result = mysqli_query($conn, $sql);
+        $list = mysqli_fetch_all($result);
+        for($i = 0; $i < count($list); $i++){
+            
+            if($list[$i][4] === 'domacinstvo'){
+                $request = "DOMAĆINSTVO";
+            }elseif($list[$i][4] === 'individualno'){
+                $request = "INDIVIDUALNO";
+            }else{
+                $request = "DRUGO";
+            }
+
+            $notifications = $notifications.'<div class="notification">
+            <h3 class="ntfc-jmbg">'.$list[$i][0].'</h3>
+            <div class="request">'.$request.'</div>
+            <div class="contact hidden">'.$list[$i][3].'</div>
+            <div class="text hidden">'.$list[$i][5].'</div>
+            </div>';
+        }
+
     }else {
         die("Connection failed: " . mysqli_connect_error());
     }
     if(isset($_SESSION['post_response'])){
         if($_SESSION['post_response'] === 2){
-            echo "postoji pod tim imenom";
+            $alert_popis = "<script>alert('Postoji popis pod tim imenom')</script>";
         }elseif($_SESSION['post_response'] === 3){
-            echo "Popis je u toku";            
+            $alert_popis = "<script>alert('Popis je u toku')</script>";            
+        }elseif($_SESSION['post_response'] === 4){
+            $alert_popis = "<script>alert('Došlo dogreške! Pokušajte ponovo!')</script>";            
+        }elseif($_SESSION['post_response'] === 1){
+            $alert_popis = "<script>alert('Popis je započet!')</script>";            
         }
-        else{
-            echo "Upisan";            
-        }
+        $_SESSION['post_response'] = 0;
     }
     //echo $str;
 
@@ -74,42 +99,8 @@
                 <div>JMBG</div>
                 <div>ZAHTJEV</div>
             </div>
-            <div class="notification">
-                <h3 class="ntfc-jmbg">12312312312311</h3>
-                <div class="request">DOMAĆINSTVO</div>
-                <div class="contact hidden">1233312232</div>
-                <div class="text hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam pariatur quia dolorem quasi? Consequuntur, ex ut suscipit repellat sint aut, quos in alias recusandae reprehenderit, vel hic temporibus maxime nemo?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed ipsam ipsa quaerat! Minima ipsum ratione possimus quasi optio reprehenderit facere asperiores ipsa saepe minus! Iure totam delectus sunt possimus hic.</div>
-            </div>
-            <div class="notification">
-                <h3 class="ntfc-jmbg">12312312312311</h3>
-                <div class="request">DOMAĆINSTVO</div>
-                <div class="contact hidden">1233312232</div>
-                <div class="text hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam pariatur quia dolorem quasi? Consequuntur, ex ut suscipit repellat sint aut, quos in alias recusandae reprehenderit, vel hic temporibus maxime nemo?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed ipsam ipsa quaerat! Minima ipsum ratione possimus quasi optio reprehenderit facere asperiores ipsa saepe minus! Iure totam delectus sunt possimus hic.</div>
-            </div>
-            <div class="notification">
-                <h3 class="ntfc-jmbg">12312312312311</h3>
-                <div class="request">DOMAĆINSTVO</div>
-                <div class="contact hidden">1233312232</div>
-                <div class="text hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam pariatur quia dolorem quasi? Consequuntur, ex ut suscipit repellat sint aut, quos in alias recusandae reprehenderit, vel hic temporibus maxime nemo?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed ipsam ipsa quaerat! Minima ipsum ratione possimus quasi optio reprehenderit facere asperiores ipsa saepe minus! Iure totam delectus sunt possimus hic.</div>
-            </div>
-            <div class="notification">
-                <h3 class="ntfc-jmbg">12312312312311</h3>
-                <div class="request">DRUGO</div>
-                <div class="contact hidden">1233312232</div>
-                <div class="text hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam pariatur quia dolorem quasi? Consequuntur, ex ut suscipit repellat sint aut, quos in alias recusandae reprehenderit, vel hic temporibus maxime nemo?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed ipsam ipsa quaerat! Minima ipsum ratione possimus quasi optio reprehenderit facere asperiores ipsa saepe minus! Iure totam delectus sunt possimus hic.</div>
-            </div>
-            <div class="notification">
-                <h3 class="ntfc-jmbg">12312312312311</h3>
-                <div class="request">DOMAĆINSTVO</div>
-                <div class="contact hidden">1233312232</div>
-                <div class="text hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam pariatur quia dolorem quasi? Consequuntur, ex ut suscipit repellat sint aut, quos in alias recusandae reprehenderit, vel hic temporibus maxime nemo?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed ipsam ipsa quaerat! Minima ipsum ratione possimus quasi optio reprehenderit facere asperiores ipsa saepe minus! Iure totam delectus sunt possimus hic.</div>
-            </div>
-            <div class="notification">
-                <h3 class="ntfc-jmbg">12312312312311</h3>
-                <div class="request">INDIVIDUALNO</div>
-                <div class="contact hidden">1233312232</div>
-                <div class="text hidden">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam pariatur quia dolorem quasi? Consequuntur, ex ut suscipit repellat sint aut, quos in alias recusandae reprehenderit, vel hic temporibus maxime nemo?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Sed ipsam ipsa quaerat! Minima ipsum ratione possimus quasi optio reprehenderit facere asperiores ipsa saepe minus! Iure totam delectus sunt possimus hic.</div>
-            </div>
+            
+            <?php echo $notifications;?>
         </div>
     </div>
     
@@ -139,6 +130,10 @@
 
     <footer></footer>
 
+    <? if ($alert_popis !== ""): ?>
+        <?php echo $alert_popis;?>
+    <? endif; ?>
+    
     <script src="custom.js"></script>
 
 </body>

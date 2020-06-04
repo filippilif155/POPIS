@@ -3,6 +3,8 @@
 session_start();
 $html_errors = "";
 $hidden = "hidden";
+require '../trigger/trigger.php';
+
 
 
 if(isset($_POST['jmbg']) || isset($_POST['jmbg-0'])){

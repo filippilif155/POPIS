@@ -1,5 +1,6 @@
 <?php
     session_start();
+    require '../trigger/trigger.php';
     $hidden = "hidden";
     if(isset($_POST['submit'])){ 
         $conn = mysqli_connect('localhost', 'root', '', 'baza_popis');
