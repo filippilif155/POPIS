@@ -8,7 +8,7 @@ if ($conn) {
         $_SESSION['popis'] = $popis;
         header("Location: ../census-started-user/index.php");
     }else{
-        header("Location: ../census-didnt-start-usr/index.html");
+        header("Location: ../census-didnt-start-user/index.html");
     }
     
 }else {

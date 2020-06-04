@@ -1,0 +1,320 @@
+body {
+    margin: 0;
+    background-color: #faf0dc;
+    overflow-x: hidden;
+}
+
+.nav-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    margin-top: 2vw;
+}
+
+.nav-bar-li {
+    text-decoration: none;
+    list-style-type: none;
+    text-align: center;
+    background-color: #0B4141;
+    color: #faf0dc;
+    height: 4vw;
+    width: 40vw;
+    font-size: 2vw;
+    line-height: 4vw;
+    font-weight: 400;
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+}
+
+label {
+    height: fit-content;
+    width: fit-content;
+    text-align: center;
+    cursor: pointer;
+}
+
+.radio {
+    display: none;
+}
+
+.hidden {
+    display: none;
+}
+
+input[value="ntfc"]:checked+label>.nav-bar-li {
+    background-color: #41180b;
+}
+
+input[value="census"]:checked+label>.nav-bar-li {
+    background-color: #41180b;
+}
+
+.container {
+    height: fit-content;
+    width: 80vw;
+    margin-left: 10vw;
+    background-color: #0B4141;
+    margin-top: 2vw;
+}
+
+.form {
+    padding: 4vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 1vw;
+    justify-items: center;
+    align-items: center;
+    font-size: 2vw;
+    font-family: 'Merriweather', serif;
+    color: #faf0dc;
+    font-style: italic;
+}
+
+.census-name,
+.date {
+    width: 25vw;
+    height: 3vw;
+    font-size: 2vw;
+}
+
+.btn {
+    width: 18vw;
+    height: 4vw;
+    font-family: 'Merriweather', serif;
+    background-color: #C7d0d8;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.disabled {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+h1 {
+    width: 100%;
+    font-size: 4vw;
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #faf0dc;
+    font-weight: 400;
+    text-align: center;
+    padding-top: 2vw;
+}
+
+.notifications {
+    background-color: #faf0dc;
+    color: black;
+    display: grid;
+    gap: 10px 10px;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    margin: 3vw 3vw 0;
+    border-bottom: solid 3vw #0B4141;
+    padding: 4px;
+    font-size: 2vw;
+    font-family: 'Roboto Condensed', sans-serif;
+}
+
+.notification {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    cursor: pointer;
+    background-color: #C7d0d8;
+    box-shadow: 1px 1px 5px 5px #C7d0d8;
+}
+
+.notification:hover {
+    background-color: rgb(178, 185, 190);
+    box-shadow: 1px 1px 5px 5px rgb(178, 185, 190);
+}
+
+.header {
+    background-color: rgb(178, 185, 190);
+    box-shadow: 1px 1px 5px 5px rgb(178, 185, 190);
+    width: 100%;
+    height: 5vw;
+    font-size: 1.8vw;
+    text-align: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    font-family: 'Roboto Condensed', sans-serif;
+    justify-items: center;
+    align-items: center;
+}
+
+.logout {
+    background-color: rgb(178, 185, 190);
+    box-shadow: 1px 1px 2px 2px rgb(178, 185, 190);
+    font-size: 1.6vw;
+    font-family: 'Roboto Condensed', sans-serif;
+    width: 7vw;
+    height: 3vw;
+    position: absolute;
+    top: 2.5vw;
+    left: 91vw;
+}
+
+footer {
+    background-color: rgb(8, 53, 53);
+    width: 100%;
+    height: 10vh;
+    margin-top: 6vw;
+}
+
+.modal {
+    text-align: center;
+    font-size: 2vw;
+    font-family: 'Roboto Condensed', sans-serif;
+    width: 60vw;
+    background-color: #faf0dc;
+    border: solid 2px black;
+    border-radius: 10px;
+    position: absolute;
+    padding-top: 3vw;
+    top: 10vw;
+    left: 20vw;
+    z-index: 2;
+}
+
+.btn-modal {
+    font-size: 1.5vw;
+    width: 10vw;
+    height: 4vw;
+    margin: 2vw 9vw;
+    font-family: 'Merriweather', serif;
+    font-weight: 400;
+    font-style: italic;
+    color: white;
+}
+
+.refuse {
+    background-color: red;
+}
+
+.allow {
+    background-color: #0B4141;
+}
+
+.btn-close {
+    width: 3vw;
+    height: 3vw;
+    color: white;
+    background-color: red;
+    border-radius: 15vw;
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+}
+
+.mask {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.616);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+button {
+    outline: none;
+}
+
+@media screen and (max-width: 800px) {
+    .logout {
+        width: 8vw;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .btn {
+        width: 20vw;
+        height: 5vw;
+    }
+    .btn-close {
+        width: 20px;
+        height: 20px;
+        font-size: 10px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .nav-bar {
+        grid-template-columns: 1fr;
+    }
+    .form {
+        grid-template-columns: 1fr;
+        font-size: 9px;
+    }
+    .btn {
+        width: 100px;
+        height: 30px;
+    }
+    .census-name,
+    .date {
+        width: 40vw;
+        height: 20px;
+        font-size: 9px;
+    }
+    .notifications {
+        grid-template-columns: 1fr;
+        font-size: 4vw;
+    }
+    .header-two {
+        display: none;
+    }
+    .header {
+        font-size: 5vw;
+        height: 7vw;
+    }
+    h1 {
+        font-size: 6vw;
+    }
+    .nav-bar-li {
+        width: 80vw;
+        height: 6vw;
+        font-size: 4vw;
+        line-height: 6vw;
+    }
+    .logout {
+        position: relative;
+        top: 2vw;
+        left: 70vw;
+        width: 20vw;
+        height: 8vw;
+        font-size: 3vw;
+    }
+    .modal {
+        font-size: 3vw;
+        width: 80vw;
+        left: 10vw;
+    }
+    .btn-modal {
+        font-size: 3vw;
+    }
+}
+
+@media screen and (max-width: 260px) {
+    .census-name,
+    .date {
+        width: 60vw;
+    }
+    .logout {
+        left: 60vw;
+        width: 30vw;
+        height: 8vw;
+        font-size: 4vw;
+    }
+    .modal {
+        font-size: 4vw;
+    }
+    .h1 {
+        margin-top: 2vw;
+    }
+}
