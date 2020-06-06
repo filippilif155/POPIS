@@ -1,0 +1,226 @@
+html {
+    font-size: 65.5%;
+}
+
+.select {
+    width: fit-content;
+    font-size: 3vw;
+    margin-left: 50%;
+    transform: translateX(-50%);
+    height: 3vw;
+    line-height: 3vw;
+}
+
+.select>select {
+    height: 3vw;
+    width: 15vw;
+    font-size: 2vw;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #FAF0DC;
+}
+
+@media only screen and (max-width: 500px) {
+    body {
+        overflow: visible;
+    }
+}
+
+.header {
+    width: 90%;
+    height: 15vh;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.header button {
+    font-family: 'Merriweather', serif;
+    font-style: italic;
+    color: white;
+    background-color: #0B4141;
+    width: 20%;
+    height: 40%;
+    margin-top: auto;
+    margin-bottom: auto;
+    border: none;
+    border-radius: 10px;
+    color: #FAF0DC;
+    cursor: pointer;
+}
+
+#next,
+#prev {
+    background-color: #FAF0DC;
+    border: none;
+    color: black;
+    font-size: 40px;
+    outline: none;
+    pointer-events: none;
+    /* want only evenet for pseudo(right and left arrow)*/
+}
+
+@media only screen and (max-width: 500px) {
+    #next,
+    #prev {
+        display: none;
+    }
+}
+
+.fa-chevron-right::before {
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.fa-chevron-left::before {
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.slider {
+    height: 95%;
+    display: flex;
+    width: 95%;
+    padding: auto;
+    overflow: hidden;
+}
+
+.slider .visibleslide {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 100%;
+    display: flex;
+    height: 100%;
+    margin: auto, 0, auto, 0;
+}
+
+@media only screen and (max-width: 500px) {
+    .slider {
+        flex-direction: column;
+        margin-bottom: 10rem;
+    }
+    .slider .visibleslide {
+        flex-direction: column;
+        height: 33%;
+    }
+    .select {
+        font-size: 4vw;
+        height: 4vw;
+        line-height: 4vw;
+    }
+    .select>select {
+        height: 4vw;
+        width: 20vw;
+        font-size: 3vw;
+    }
+}
+
+.visibleslide .item {
+    width: 31%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+}
+
+@media only screen and (max-width: 500px) {
+    .visibleslide .item {
+        height: 30rem;
+        width: 80%;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .visibleslide .item {
+        height: 20rem;
+        width: 80%;
+    }
+}
+
+.visibleslide .item .checkbox {
+    padding: 1rem;
+    font-size: 4rem;
+    width: 80%;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid grey;
+}
+
+.visibleslide .item .checkbox:hover {
+    cursor: pointer;
+    background-color: rgba(47, 87, 87)
+}
+
+.inputp {
+    position: relative;
+}
+
+.disable {
+    position: absolute;
+    top: -5rem;
+    right: 10rem;
+    width: 10rem;
+    height: 5rem;
+    font-size: 2vw;
+    font-family: 'Merriweather', serif;
+    background-color: #C7d0d8;
+    font-weight: 400;
+    color: black;
+    font-style: italic;
+}
+
+.disable:hover {
+    cursor: not-allowed;
+}
+
+.active {
+    position: absolute;
+    top: -5rem;
+    right: 10rem;
+    width: 10rem;
+    height: 5rem;
+    font-size: 2vw;
+    font-family: 'Merriweather', serif;
+    background-color: #C7d0d8;
+    font-weight: 400;
+    color: black;
+    font-style: italic;
+}
+
+.active:hover {
+    cursor: pointer;
+}
+
+main {
+    display: flex;
+    height: 75vh;
+    width: 95%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media only screen and (max-width: 500px) {
+    main {
+        height: auto;
+    }
+    .active,
+    .disable {
+        width: 8rem;
+        height: 4rem;
+        font-size: 3vw;
+    }
+}
+
+.footer {
+    background-color: #0B4141;
+    height: 10vh;
+}

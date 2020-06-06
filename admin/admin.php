@@ -56,9 +56,6 @@
         }
         $_SESSION['post_response'] = 0;
     }
-    //echo $str;
-
-    //session_destroy();
     mysqli_close($conn);
 ?>
 <!DOCTYPE html>
