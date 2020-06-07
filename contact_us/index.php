@@ -15,8 +15,8 @@
 
           $query = "INSERT INTO $name_ntfc (`jmbg`, `ime`, `prezime`, `kontakt`, `tip_zahtjeva`, `tekst_zahtjeva`) VALUES ('$jmbg', '$ime', '$prezime', '$kontakt', '$tip_zahtjeva', '$tekst_zahtjeva')";
           if(mysqli_query($conn, $query)){
-            header('Location: ../home/index.php');
-        } 
+            header('Location: ../redirect/index.html');
+          } 
         else {
             echo 'ERROR: '. mysqli_error($conn);
         }

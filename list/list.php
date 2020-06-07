@@ -25,10 +25,12 @@
 ?>
 <html>
 <head>
+    <script src="https://kit.fontawesome.com/3cb4a77e3d.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POPIS</title>
     <link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto+Condensed&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../navbar/style.css">
     <link rel="shortcut icon" href="../home/montenegro.png" type="image/x-icon">
@@ -70,7 +72,7 @@
             <div class="item" >
                 <label class="checkbox" for="pol" style ='background-image: url("./ISimage/gender.png"); background-position: center; 
                 background-repeat: no-repeat; 
-                background-size: 80%;'>
+                background-size: 60%;'>
                     Pol
                 <input type="checkbox" style="opacity: 0;" value="Pol" name="form[]" id="pol" >            
                 </label>
@@ -78,7 +80,7 @@
             <div class="item" >
                 <label class="checkbox" style="background-image: url('./ISimage/nat.png'); background-position: center; 
                 background-repeat: no-repeat; 
-                background-size:60%   ;" for="nacija">
+                background-size:60%;" for="nacija">
                     Nacija
                 <input type="checkbox" style="opacity: 0;" value="Nacija" name="form[]" id="nacija">            
                 </label>
@@ -86,7 +88,7 @@
             <div class="item" >
                 <label class="checkbox" for="jezik" style="background-image: url('./ISimage/len.png'); background-position: center; 
                 background-repeat: no-repeat; 
-                background-size:80%   ;">
+                background-size:60%;">
                     Jezik
                 <input type="checkbox" style="opacity: 0;" value="Jezik"  name="form[]" id="jezik" >            
                 </label>
@@ -96,7 +98,7 @@
             <div class="item" >
                 <label class="checkbox" for="vjera" style="background-image: url('./ISimage/rel.png'); background-position: center; 
                 background-repeat: no-repeat; 
-                background-size:80%   ;">
+                background-size:60%;">
                     Vjera
                 <input type="checkbox" style="opacity: 0;" value="Vjera"   name="form[]" id="vjera" >            
                 </label>
@@ -104,7 +106,7 @@
             <div class="item" >
                 <label class="checkbox" for="zaposlenje" style ='background-image: url("./ISimage/work.png"); background-position: center; 
                 background-repeat: no-repeat; 
-                background-size: 70%;'>
+                background-size: 60%;'>
                     Zaposlenje
                 <input type="checkbox" style="opacity: 0;" value="Zaposlenje"  name="form[]" id="zaposlenje" >            
                 </label>
@@ -112,7 +114,7 @@
             <div class="item">
                 <label class="checkbox" for="brak" style ='background-image: url("./ISimage/mar.png"); background-position: center; 
                 background-repeat: no-repeat; 
-                background-size: 80%;'>
+                background-size: 60%;'>
                     Bracni status
                 <input type="checkbox" style="opacity: 0;" value="Brak"  name="form[]" id="brak" >            
                 </label>
@@ -122,7 +124,7 @@
                 <div class="item">
                     <label class="checkbox" for="brojstanovnika" style ='background-image: url("./ISimage/people.png"); background-position: center; 
                     background-repeat: no-repeat; 
-                    background-size: 80%;'>
+                    background-size: 60%;'>
                         Broj stanovnika
                     <input type="checkbox" style="opacity: 0;" value="BrojStanovnika"   name="form[]" id="brojstanovnika" >            
                     </label>
@@ -130,7 +132,7 @@
                 <div class="item">
                     <label class="checkbox" for="tip" style ='background-image: url("./ISimage/tip.png"); background-position: center; 
                     background-repeat: no-repeat; 
-                    background-size: 80%;'>
+                    background-size:60%;'>
                         Tip naselja
                     <input type="checkbox" style="opacity: 0;" value="Tip"   name="form[]" id="tip" >            
                     </label>
@@ -138,7 +140,7 @@
                 <div class="item">
                     <label class="checkbox" for="zarada" style ='background-image: url("./ISimage/money.png"); background-position: center; 
                     background-repeat: no-repeat; 
-                    background-size: 80%;'>
+                    background-size: 60%;'>
                         Zarada
                     <input type="checkbox" style="opacity: 0;" value="Zarada"   name="form[]" id="zarada" >            
                     </label>

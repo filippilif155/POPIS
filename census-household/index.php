@@ -71,12 +71,12 @@
             }
             if ($help === count($jmbg_array)+1){          
                 session_destroy();
-                header('Location: ../home/index.php');
+                header('Location: ../redirect/index.html');
                 
             }
         }else{
             session_destroy();
-            header('Location: ../home/index.php');
+            header('Location: ../redirect/index.html');
         }
         
         
@@ -90,7 +90,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>POPIS</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="../navbar/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">

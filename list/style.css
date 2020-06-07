@@ -1,6 +1,13 @@
 html {
     font-size: 65.5%;
 }
+form{
+    margin-top:3vw;
+    margin-bottom: 5vw;
+}
+li{
+    font-size: 1.5rem;
+}
 
 .select {
     width: fit-content;
@@ -12,16 +19,18 @@ html {
 }
 
 .select>select {
-    height: 3vw;
+    height: 3.4vw;
     width: 15vw;
     font-size: 2vw;
+
 }
 
 body {
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow-x: hidden;
     background-color: #FAF0DC;
+    font-family: 'Merriweather', serif;
 }
 
 @media only screen and (max-width: 500px) {
@@ -30,29 +39,6 @@ body {
     }
 }
 
-.header {
-    width: 90%;
-    height: 15vh;
-    margin: auto;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.header button {
-    font-family: 'Merriweather', serif;
-    font-style: italic;
-    color: white;
-    background-color: #0B4141;
-    width: 20%;
-    height: 40%;
-    margin-top: auto;
-    margin-bottom: auto;
-    border: none;
-    border-radius: 10px;
-    color: #FAF0DC;
-    cursor: pointer;
-}
 
 #next,
 #prev {
@@ -69,6 +55,14 @@ body {
     #next,
     #prev {
         display: none;
+    }
+    #submitbtn{
+        width:40vw;
+        padding: 1vw;
+        font-size: 3vw;
+        height:20vw;
+        margin: -15vw -10vw;
+    
     }
 }
 
@@ -114,8 +108,8 @@ body {
         line-height: 4vw;
     }
     .select>select {
-        height: 4vw;
-        width: 20vw;
+        height: 10vw;
+        width: 40vw;
         font-size: 3vw;
     }
 }
@@ -147,13 +141,16 @@ body {
 
 .visibleslide .item .checkbox {
     padding: 1rem;
-    font-size: 4rem;
+    font-size: 2rem;
     width: 80%;
     height: 80%;
     margin-left: auto;
     margin-right: auto;
     border: 2px solid grey;
+    
+    
 }
+
 
 .visibleslide .item .checkbox:hover {
     cursor: pointer;
