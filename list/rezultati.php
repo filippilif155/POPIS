@@ -1,4 +1,4 @@
-<html lang="en">
+<html>
 
 <head>
     <meta charset="UTF-8">
@@ -76,7 +76,6 @@
             border-radius: 5px;
         }
     </style>
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
 
 
 
@@ -96,7 +95,7 @@
     }
     $name = $_GET['popisi'];
     $name_citz = $name . "_rezultati";
-    $name_dom = $name . "_{domacinstvo}";
+    $name_dom = $name . "_domacinstvo";
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 
 
@@ -160,12 +159,12 @@
             <th>Procenat muškaraca</th>\n
             <th>Procenat žena</th>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
                 print "<tr>\n";
                 foreach ($row as $item) {
                     print "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
                 }
-
                 print "<td>" . round($row['Muski'] * 100 / $row['ukupno']) . "%</td>\n
                     <td>" . round($row['Zenski'] * 100 / $row['ukupno']) . "%</td>\n
                 </tr>\n";
@@ -184,7 +183,7 @@
     COUNT(CASE WHEN Nacija ='Albanac' then 1 ELSE NULL END) as Albanci,
     COUNT(CASE WHEN Nacija ='Musliman' then 1 ELSE NULL END) as Muslimani,
     COUNT(CASE WHEN Nacija ='Rom' then 1 ELSE NULL END) as Romi,
-    COUNT(CASE WHEN Nacija ='Hravat' then 1 ELSE NULL END) as Hrvati,
+    COUNT(CASE WHEN Nacija ='Hrvat' then 1 ELSE NULL END) as Hrvati,
     COUNT(CASE WHEN Nacija ='Ostalo' then 1 ELSE NULL END) as Ostalo,
     COUNT(*) as ukupno
     FROM {$name_citz} 
@@ -205,7 +204,8 @@
                   <th>Ostalo</th>\n
                   <th>Ukupno</th>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
                 print "<tr>\n";
                 foreach ($row as $item) {
                     print "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
@@ -229,7 +229,8 @@
                   <th>Ostalo</th>\n
                   <th>Ukupno</th>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
 
                 print "
                             <tr>\n
@@ -283,7 +284,8 @@
                   <th>Ostalo</th>\n
                   <th>Ukupno</th>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
                 print "<tr>\n";
                 foreach ($row as $item) {
                     print "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
@@ -309,7 +311,8 @@
               <th>Ostalo</th>\n
               <th>Ukupno</th>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
 
                 print "
                     <tr>\n
@@ -363,7 +366,8 @@
                   <th>Ostalo</th>\n
                   <th>Ukupno</th>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
                 print "<tr>\n";
                 foreach ($row as $item) {
                     print "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
@@ -375,7 +379,7 @@
 
 
 
-        print "<p>ODNOS BROJA STANOVNIKA U PROCENTIMA PO VJERSKOM OPREDJELJENJU PO OPŠTINAMA </p>\n
+        print "<p>ODNOS BROJA STANOVNIKA U PROCENTIMA PO VJERSKOM OPREDJELJENJU PO OPŠTINAMA</p>\n
               <table border='1' class = 'blueTable'>\n
               <th>Opština</th>\n
               <th>Pravoslavci</th>\n
@@ -385,10 +389,11 @@
               <th>Agnostici</th>\n
               <th>Budisti</th>\n
               <th>Neizjašnjeni</th>\n
-              <th>Ostalo</th>\n;
+              <th>Ostalo</th>\n
               <th>Ukupno</th>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
 
                 print "
                     <tr>\n
@@ -423,7 +428,8 @@
         print "<p>STANOVNIŠTVO PREMA ZAPOSLJENJU PO OPŠTINAMA</p>\n
                       <table border='1' class = 'blueTable'>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
                 print "<tr>\n";
                 foreach ($row as $item) {
                     print "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
@@ -447,11 +453,12 @@
                   ";
         print "<p>STANOVNIŠTVO PREMA BRAČNOM STATUSU PO OPŠTINAMA</p>\n
                           <table border='1' class = 'blueTable'>\n
-                          <th>Opština</th> \n;
-                          <th>Broj stanovnika u bračnoj zajednici</th>\n;
+                          <th>Opština</th> \n
+                          <th>Broj stanovnika u bračnoj zajednici</th>\n
                           <th>Broj stanovnika u van bračne zajednici</th>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)){
                 print "<tr>\n";
                 foreach ($row as $item) {
                     print "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
@@ -484,7 +491,8 @@
         if (mysqli_query($conn, $sqlu)) {
             $row2 = mysqli_fetch_assoc(mysqli_query($conn, $sqlu));
              if(mysqli_query($conn, $sql)) {
-                while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+                $result = mysqli_query($conn, $sql);
+                while ($row = mysqli_fetch_assoc($result)){
                     print "<tr>\n
                         <td>" . $row['Grad'] . "</td>\n
                         <td>" . $row['broj'] . "</td>\n";
@@ -512,7 +520,8 @@
                  <th>Zarada prosječnog domaćinstva</th> \n
                  <th>Broj članova prosječnog domaćinstva</th>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
                 print "
                         <tr>\n
                         <td>" . $row['Grad'] . "</td>\n
@@ -544,7 +553,8 @@
                  <th>Urbano</th>\n
                  <th>Ukupno</th>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
                 print "<tr>\n";
                 foreach ($row as $item) {
                     print "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";
@@ -564,7 +574,8 @@
                  <th>Urbano</th>\n
                  <th>Ukupno</th>\n";
         if (mysqli_query($conn, $sql)) {
-            while ($row = mysqli_fetch_assoc(mysqli_query($conn, $sql))) {
+            $result = mysqli_query($conn, $sql);
+            while ($row = mysqli_fetch_assoc($result)) {
                 print "<tr>\n";
                 foreach ($row as $item) {
                     print "    <td>" . ($item !== null ? htmlentities($item, ENT_QUOTES) : "&nbsp;") . "</td>\n";

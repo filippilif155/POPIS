@@ -23,9 +23,8 @@
 
 
 ?>
-<html lang="en">
+<html>
 <head>
-    <script src="https://kit.fontawesome.com/3cb4a77e3d.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POPIS</title>
