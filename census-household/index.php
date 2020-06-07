@@ -2,9 +2,12 @@
 	
     session_start();
     require('../config/config.php');
-	require('../config/db.php');
-    $jmbg_array = $_SESSION['jmbg_array'];
-
+    require('../config/db.php');
+    if(isset($_SESSION['jmbg_array'])){
+        $jmbg_array = $_SESSION['jmbg_array'];
+    }else{
+        header('Location ../home/index.php');    
+    }
     
     
     

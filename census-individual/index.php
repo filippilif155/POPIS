@@ -8,7 +8,11 @@
 	// Check For Submit
 	if(isset($_POST['submit'])){
         session_start();
-        $jmbg = $_SESSION["jmbg"];
+        if(isset($_SESSION["jmbg"]) and $_SESSION["id_dom"]){
+            $jmbg = $_SESSION["jmbg"];
+        }else{
+            header('Location ../home/index.php');
+        }
         $godiste = '1'.substr($jmbg, 4, 3);
         $id_dom = $_SESSION["id_dom"];
         $sql = "SELECT * FROM popisi WHERE status=1";
