@@ -1,10 +1,10 @@
 <?php
-$conn = mysqli_connect('localhost', 'root', '', 'baza_popis');
+require '../config/config.php';
+$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
 if ($conn) {
     $sql = "SELECT * FROM popisi WHERE status=1";
-    $result = mysqli_query($conn, $sql);
-    $row = mysqli_fetch_row($result);
-    if($row){
+    if(mysqli_query($conn, $sql)){
+        $row = mysqli_fetch_row(mysqli_query($conn, $sql));
         echo $row[2];
     }
 }else {

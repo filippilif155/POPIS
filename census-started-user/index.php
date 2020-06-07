@@ -6,80 +6,82 @@ $hidden = "hidden";
 require '../trigger/trigger.php';
 
 
-
 if(isset($_POST['jmbg']) || isset($_POST['jmbg-0'])){
-    $conn = mysqli_connect('localhost', 'root', '', 'baza_popis');
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     if ($conn) {
         
         $sql = "SELECT * FROM popisi WHERE status=1";
-        $result = mysqli_query($conn, $sql);
-        $row = mysqli_fetch_row($result);
-        $table = $row[0]."_"."gra";
+        if(mysqli_query($conn, $sql)){    
+            $row = mysqli_fetch_row(mysqli_query($conn, $sql));
+            $table = $row[0]."_"."gradjani";
 
-        if(!empty($_POST['jmbg'])){
-            $jmbg = stripcslashes($_POST["jmbg"]);
-            $jmbg = mysqli_real_escape_string($conn, $jmbg);
-            $sql = "SELECT * FROM $table WHERE jmbg={$jmbg}";
-            $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_row($result);
-            if($row){
-                $_SESSION["jmbg"] = '';
-                if(is_null($row[3])){
-                    $html_errors = "<span>Da bi radili popis stanovništva prvo morate popisati svoje domaćinstvo!</span>";
-                    $hidden = "";
-                }elseif(!is_null($row[4])){
-                    $html_errors = "<span>Već ste popisani! Ukoliko je došlo do greške kontaktirajte admina klikom <a href='#'>ovdje</a></span>";
-                    $hidden = "";
+            if(!empty($_POST['jmbg'])){
+                $jmbg = stripcslashes($_POST["jmbg"]);
+                $jmbg = mysqli_real_escape_string($conn, $jmbg);
+                $sql = "SELECT * FROM $table WHERE jmbg={$jmbg}";
+                if(mysqli_num_rows(mysqli_query($conn, $sql)) != 0){
+                    $row = mysqli_fetch_row(mysqli_query($conn, $sql));
+                    $_SESSION["jmbg"] = '';
+                    if(is_null($row[3])){
+                        $html_errors = "<span>Da bi radili popis stanovništva prvo morate popisati svoje domaćinstvo!</span>";
+                        $hidden = "";
+                    }elseif(!is_null($row[4])){
+                        $html_errors = "<span>Već ste popisani! Ukoliko je došlo do greške kontaktirajte admina klikom <a href='../contact_us/index.php'>ovdje</a></span>";
+                        $hidden = "";
+                    }else{
+                        $_SESSION['jmbg'] = $jmbg;
+                        $_SESSION['id_dom'] = $row[3];
+                        header('Location: ../census-individual');
+                    }
                 }else{
-                    $_SESSION['jmbg'] = $jmbg;
-                    header('Location: ../census-individual');
+                    $html_errors = $html_errors. "<span>Osoba sa JMBG-om {$jmbg} ne postoji. <br></span>";
+                    $hidden = "";
                 }
-            }
-        }elseif(!empty($_POST['jmbg-0'])){
-            $num = $_POST["num-of-fields"];
-            $for_error = 0;
-            for($i = 0; $i < $num; $i++){
-                $str_current = "jmbg-{$i}";
-                for($j = $i - 1; $j > 1; $j--){
-                    $str_chck = "jmbg-{$j}";
-                    if($_POST[$str_current] === $_POST[$str_chck]){
-                        $html_errors = "<span>Vaš unos sadrži duplikate!<br></span>";
-                        $for_error = 1;
+            }elseif(!empty($_POST['jmbg-0'])){
+                $num = $_POST["num-of-fields"];
+                $for_error = 0;
+                for($i = 0; $i < $num; $i++){
+                    $str_current = "jmbg-{$i}";
+                    for($j = $i - 1; $j > 1; $j--){
+                        $str_chck = "jmbg-{$j}";
+                        if($_POST[$str_current] === $_POST[$str_chck]){
+                            $html_errors = "<span>Vaš unos sadrži duplikate!<br></span>";
+                            $for_error = 1;
+                            break;
+                        }
+                    }
+                    if($for_error === 1){
                         break;
                     }
                 }
                 if($for_error === 1){
-                    break;
-                }
-            }
-            if($for_error === 1){
-                $hidden = "";
-            }else{
-                $_SESSION["jmbg-array"] = [];
-                for($i = 0; $i < $num; $i++){
-                    $jmbg = stripcslashes($_POST["jmbg-{$i}"]);
-                    $jmbg = mysqli_real_escape_string($conn, $jmbg);
-                    $sql = "SELECT * FROM $table WHERE jmbg={$jmbg}";
-                    $result = mysqli_query($conn, $sql);
-                    $row = mysqli_fetch_row($result);
-                    if($row){
-                        if(!is_null($row[3])){
-                            $html_errors = $html_errors."<span>Osoba sa JMBG-om {$jmbg} je več popisala svoje domaćinstvo. <br></span>";    
-                        }else{
-                            array_push($_SESSION["jmbg-array"], $jmbg);
-                        }
-                    }else{
-                        $html_errors = $html_errors."<span>Osoba sa JMBG-om {$jmbg} ne postoji. <br></span>";
-                    }
-                }
-                if($html_errors !== ""){
                     $hidden = "";
                 }else{
-                    header('Location: ../census-household/index.php');
+                    $_SESSION["jmbg_array"] = [];
+                    for($i = 0; $i < $num; $i++){
+                        $jmbg = stripcslashes($_POST["jmbg-{$i}"]);
+                        $jmbg = mysqli_real_escape_string($conn, $jmbg);
+                        $sql = "SELECT * FROM $table WHERE jmbg={$jmbg}";
+                        if(mysqli_num_rows(mysqli_query($conn, $sql)) != 0){
+                            $row = mysqli_fetch_row(mysqli_query($conn, $sql));
+                            if(!is_null($row[3])){
+                                $html_errors = $html_errors."<span>Osoba sa JMBG-om {$jmbg} je već popisala svoje domaćinstvo. <br></span>";    
+                            }else{
+                                array_push($_SESSION["jmbg_array"], $jmbg);
+                            }
+                        }else{
+                            $html_errors = $html_errors."<span>Osoba sa JMBG-om {$jmbg} ne postoji. <br></span>";
+                        }
+                    }
+                    if($html_errors !== ""){
+                        $hidden = "";
+                    }else{
+                        header('Location: ../census-household/index.php');
+                    }
                 }
+
+
             }
-
-
         }
 
     }else {
@@ -140,7 +142,7 @@ if(isset($_POST['jmbg']) || isset($_POST['jmbg-0'])){
 
     <div class="html-error <?php echo $hidden;?>" id="html-error">
         <?php echo $html_errors;?>
-        <span>Ukoliko želite da prijavite grešku kliknite <a href="#">ovdje</a>.</span>
+        <span>Ukoliko želite da prijavite grešku kliknite <a href="../contact_us/index.php">ovdje</a>.</span>
         <button class="btn-close err-btn" id="error-close">X</button>
     </div>
 

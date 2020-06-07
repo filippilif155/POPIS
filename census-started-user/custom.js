@@ -100,7 +100,6 @@ function validateDomForm() {
         }
 
         for (let j = i - 1; j >= 0; j--) {
-            console.log(elem + " - " + jmbgList[j].value);
             if (elem === jmbgList[j].value) {
                 wrongInput(i, "Duplikat!");
                 continue;

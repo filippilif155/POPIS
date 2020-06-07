@@ -1,6 +1,5 @@
 <?php
     session_start();
-    require '../trigger/trigger.php';
     $hidden = "hidden";
     if(isset($_POST['submit'])){ 
         $conn = mysqli_connect('localhost', 'root', '', 'baza_popis');
@@ -11,8 +10,7 @@
             $password = mysqli_real_escape_string($conn, $password);
             $sql = "SELECT * FROM admini WHERE username='$username' and password='$password'";
             $result = mysqli_query($conn, $sql);
-            $row = mysqli_fetch_row($result);
-            if($row){
+            if(mysqli_fetch_row($result)){
                 $_SESSION['username'] = $username;
                 header("Location: ../admin/admin.php");
             }else{
@@ -31,16 +29,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>POPIS</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../navbar/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="montenegro.png" type="image/x-icon">
 <body>
     <nav>
         <ul>
-            <li>POČETNA STRANA</li>
-            <li>POPIŠI SE</li>
-            <li>REZULTATI POPISA</li>
-        </ol>
+            <a href="#"><li>POČETNA STRANA</li></a>
+            <a href="../contact_us/index.php"><li>KONTAKTIRAJ NAS</li></a>
+            <a href="../list/list.php"><li>REZULTATI POPISA</li></a>
+            
+        </ul>
+        <div class="handle">
+				<p class="menu">MENU</p>
+				<div class="menu_icon">
+			      <div></div>
+			      <div></div>
+			      <div></div>
+		        </div>
+		</div>
     </nav>
     <div class="main">
         <div class="welcome-message">
@@ -75,5 +83,11 @@
     </footer>
 
     <script src="custom.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+		$('.handle').on('click', function(){
+			$('nav ul').toggleClass('showing');
+		});
+    </script>
 </body>
 </html>

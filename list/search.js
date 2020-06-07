@@ -49,7 +49,7 @@ function goprev() {
 
 }
 
-var myVar = setInterval(gonext, 4000)
+var myVar = setInterval(gonext, 10000)
 wchange()
 
 function wchange() {
@@ -58,7 +58,7 @@ function wchange() {
         next.addEventListener('click', gonext);
         prev.addEventListener('click', goprev)
         clearInterval(myVar)
-        myVar = setInterval(gonext, 4000)
+        myVar = setInterval(gonext, 10000)
     } else {
         clearInterval(myVar)
     }

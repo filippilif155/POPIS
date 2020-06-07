@@ -1,7 +1,8 @@
 <?php 
     session_start();
+    require '../config/config.php';
     if(isset($_POST['date'])){
-        $conn = mysqli_connect('localhost', 'root', '', 'baza_popis');
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         if($conn){
             $name = stripcslashes($_POST['census-name']);
             $date = stripcslashes($_POST['date']);
@@ -10,13 +11,11 @@
             $sql = "SELECT * FROM popisi WHERE ime_popisa='$name'";
             
             $result = mysqli_query($conn, $sql);
-            $popis = mysqli_fetch_row($result);
             $sql = "SELECT * FROM popisi WHERE status=1";
             $result_status = mysqli_query($conn, $sql);
-            $popis_status = mysqli_fetch_row($result_status);
-            if($popis){
+            if(mysqli_fetch_row($result)){
                 $_SESSION['post_response'] = 2;
-            }elseif($popis_status){
+            }elseif(mysqli_fetch_row($result_status)){
                 $_SESSION['post_response'] = 3;
             } 
             else{

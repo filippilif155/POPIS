@@ -1,10 +1,11 @@
 <?php 
-    $conn = mysqli_connect('localhost', 'root', '', 'baza_popis');
+    require '../config/config.php';
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     if ($conn) {
         $sql = "SELECT * FROM popisi WHERE status=1";
         $result = mysqli_query($conn, $sql);
-        $popis = mysqli_fetch_row($result)[0];
-        if($popis){
+        if(mysqli_fetch_row($result)){
+            $popis = mysqli_fetch_row($result)[0];
             $_SESSION['popis'] = $popis;
             header("Location: ../census-started-user/index.php");
         }else{

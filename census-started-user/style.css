@@ -171,7 +171,7 @@ button {
     color: black;
 }
 
-@media screen and (max-width: 650px) {
+@media screen and (max-width: 678px) {
     .man {
         display: none;
     }
@@ -182,6 +182,8 @@ button {
     }
     .text {
         color: black;
+        
+    
     }
     button {
         font-size: 1.5vw;
@@ -216,6 +218,8 @@ button {
     }
     .text {
         font-size: 3vw;
+        width:80vw;
+        margin: 3vw auto;
     }
     p {
         text-align: center;

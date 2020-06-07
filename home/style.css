@@ -9,33 +9,7 @@ body{
     position: relative;
 }
 
-ul{
-    display: flex;
-    flex-direction: row;
-    list-style-type: none;
-    flex-wrap:wrap;
-    justify-content: space-between;
-    align-items: center;
 
-}
-nav{
-    padding:2vw;
-}
-
-li{
-    background-color: #0B4141;
-    padding:1vw 5vw;
-    color:  #faf0dc;
-    font-size: 1.4vw;
-    font-weight: 400;
-    font-family: 'Merriweather', serif;
-    font-style: italic;
-}
-footer{
-    background-color: #0B4141;
-    height:5vw;
-    
-}
 .main{
     display: flex;
     flex-direction: row;
@@ -165,7 +139,14 @@ button{
 .hidden{
     display: none;
 }
-@media screen and (max-width: 600px){
+@media screen and (min-width: 678px) and (max-width:1200px){
+    .main{
+        height: 80vh;
+        margin-top:10vw;
+        
+    }
+}
+@media screen and (max-width: 678px){
     .admin-form > form{
         grid-template-columns: 1fr;
         grid-template-rows: 1fr 1fr;
@@ -188,7 +169,53 @@ button{
     .bad-input{
         padding-top: 20px;
     }
+    
+    .main{
+        flex-direction: column;
+        height:90vh;
+    }
+    .welcome-message{
+        margin:10vh auto;
+        transform: scale(1.1);
+        height:20vh;
+        padding: auto;
+    }
+    .home-images{
+        margin:2vw auto;
+        height:40vw;
+        padding: auto;
+    }
+    
 }
+@media screen and (max-width: 500px){
+    .main{
+        height:80vh;
+    }
+    .welcome-message{
+        
+        transform: scale(1.4);
+        
+    }
+    .home-images{
+        
+        transform: scale(1.15);
+        
+    }
+}
+@media screen and (max-width: 400px){
+
+    .welcome-message{
+        
+        transform: scale(1.6);
+        
+    }
+    .home-images{
+        
+        transform: scale(1.35);
+        
+    }
+}
+
 @media screen and (max-width: 250px){
     .admin-form-close{
         width: 10px;

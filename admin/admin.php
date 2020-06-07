@@ -9,36 +9,35 @@
         header('Location: ../home/index.php');
     }
     $active = "";
-    $html_heading = "Popis je u toku!";
-    $conn = mysqli_connect('localhost', 'root', '', 'baza_popis');
+    $html_heading = "Popis nije u toku!";
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     if ($conn) {
         $sql = "SELECT * FROM popisi WHERE status=1";
-        $result = mysqli_query($conn, $sql);
-        $popis = mysqli_fetch_row($result);
-        if($popis){
+        if(mysqli_query($conn, $sql)){
+            $popis = mysqli_fetch_row(mysqli_query($conn, $sql));
             $active = "disabled";
-            $html_heading = "Popis nije u toku!";
-        }
-        $ntfc_name = $popis[0]."_obavjestenja";
-        $sql = "SELECT * FROM {$ntfc_name}";
-        $result = mysqli_query($conn, $sql);
-        $list = mysqli_fetch_all($result);
-        for($i = 0; $i < count($list); $i++){
+            $html_heading = "Popis je u toku!";
+            $ntfc_name = $popis[0]."_obavjestenja";
+            $sql = "SELECT * FROM {$ntfc_name}";
+                if(mysqli_query($conn, $sql)){
+                $list = mysqli_fetch_all(mysqli_query($conn, $sql));
+                for($i = 0; $i < count($list); $i++){
+                    if($list[$i][4] === 'domacinstvo'){
+                        $request = "DOMAĆINSTVO";
+                    }elseif($list[$i][4] === 'individualno'){
+                        $request = "INDIVIDUALNO";
+                    }else{
+                        $request = "DRUGO";
+                    }
 
-            if($list[$i][4] === 'domacinstvo'){
-                $request = "DOMAĆINSTVO";
-            }elseif($list[$i][4] === 'individualno'){
-                $request = "INDIVIDUALNO";
-            }else{
-                $request = "DRUGO";
+                    $notifications = $notifications.'<div class="notification">
+                    <h3 class="ntfc-jmbg">'.$list[$i][0].'</h3>
+                    <div class="request">'.$request.'</div>
+                    <div class="contact hidden">'.$list[$i][3].'</div>
+                    <div class="text hidden">'.$list[$i][5].'</div>
+                    </div>';
+                }
             }
-
-            $notifications = $notifications.'<div class="notification">
-            <h3 class="ntfc-jmbg">'.$list[$i][0].'</h3>
-            <div class="request">'.$request.'</div>
-            <div class="contact hidden">'.$list[$i][3].'</div>
-            <div class="text hidden">'.$list[$i][5].'</div>
-            </div>';
         }
 
     }else {

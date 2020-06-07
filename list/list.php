@@ -1,13 +1,11 @@
 <?php
-
-    $conn = mysqli_connect('localhost', 'root', '', 'baza_popis');
+    require '../config/config.php';
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     if ($conn) {
         $sql = "SELECT ime_popisa FROM popisi";
-        $result = mysqli_query($conn, $sql);
         $html_select = "U bazi nema popisa!";
-        if($result){
-            $popis = mysqli_fetch_all($result);
-        
+        if(mysqli_query($conn, $sql)){
+            $popis = mysqli_fetch_all(mysqli_query($conn, $sql));
             $html_select = '<label for="popisi">Izaberite popis: </label>
             <select name="popisi" id="popisi">';
             foreach ($popis as $elem) {
@@ -30,9 +28,11 @@
     <script src="https://kit.fontawesome.com/3cb4a77e3d.js" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>POPIS</title>
     <link href="https://fonts.googleapis.com/css?family=Merriweather|Roboto+Condensed&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../navbar/style.css">
+    <link rel="shortcut icon" href="../home/montenegro.png" type="image/x-icon">
 
 
 </head>
@@ -42,11 +42,22 @@
 
 <body>
 
-    <header class="header">
-        <button>POČETNA STRANA</button>
-        <button>POPIŠI SE</button>
-        <button>REZULTATI POPISA</button>
-    </header>
+    <nav>
+        <ul>
+            <a href="../home/index.php"><li>POČETNA STRANA</li></a>
+            <a href="../contact_us/index.php"><li>KONTAKTIRAJ NAS</li></a>
+            <a href="#"><li>REZULTATI POPISA</li></a>
+            
+        </ul>
+        <div class="handle">
+				<p class="menu">MENU</p>
+				<div class="menu_icon">
+			      <div></div>
+			      <div></div>
+			      <div></div>
+		        </div>
+		</div>
+    </nav>
     
     <form action="rezultati.php" target="_blank" method="GET">
         <div class="select">
@@ -147,5 +158,11 @@
        <p>Kontakt: popis@mne.com</p>
    </footer>
    <script src="./search.js" ></script>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+		$('.handle').on('click', function(){
+			$('nav ul').toggleClass('showing');
+		});
+    </script>
 </body>
 </html>
