@@ -1,15 +1,16 @@
 <?php
     require '../config/config.php';
+    require '../config/fetch.php';
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     if ($conn) {
         $sql = "SELECT ime_popisa FROM popisi";
         $html_select = "U bazi nema popisa!";
         if(mysqli_query($conn, $sql)){
-            $popis = mysqli_fetch_all(mysqli_query($conn, $sql));
+            $popis = mysqli_fetch_all_alt(mysqli_query($conn, $sql));
             $html_select = '<label for="popisi">Izaberite popis: </label>
             <select name="popisi" id="popisi">';
             foreach ($popis as $elem) {
-                $html_select =  $html_select.'<option value="'.$elem[0].'">'.$elem[0].'</option>';
+                $html_select =  $html_select.'<option value="'.$elem['ime_popisa'].'">'.$elem['ime_popisa'].'</option>';
             }
             $html_select = $html_select."</select>";
 

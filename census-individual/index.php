@@ -82,9 +82,9 @@
             <form method="POST" action="<?php $_SERVER['PHP_SELF']; ?>">
                 <div  class="form-part f1">
                     1. Pol: <br>
-                    <input type="radio" id="male" name="gender" value="Muški">
+                    <input type="radio" id="male" name="gender" value="Muski">
                     <label for="male">Muški</label><br>
-                    <input type="radio" id="female" name="gender" value="Ženski">
+                    <input type="radio" id="female" name="gender" value="Zenski">
                     <label for="female">Ženski</label>
                     
                 </div>
@@ -93,12 +93,12 @@
                     <select class="select-nacija" name="nacija" required>
                         <option value="Crnogorac">Crnogorac</option>
                         <option value="Srbin">Srbin</option>
-                        <option value="Bošnjak">Bošnjak</option>
+                        <option value="Bosnjak">Bošnjak</option>
                         <option value="Albanac">Albanac</option>
                         <option value="Musliman">Musliman</option>
                         <option value="Rom">Rom</option>
                         <option value="Hrvat">Hrvat</option>
-                        <option value="neizjašnjen" selected>neizjašnjen</option>
+                        <option value="neizjasnjen" selected>neizjašnjen</option>
                         <option value="ostalo">ostalo</option>
                     </select>
                 
@@ -114,9 +114,9 @@
                          <option value="bosanski">bosanski</option>
                          <option value="albanski">albanski</option>
                          <option value="romski">romski</option>
-                         <option value="bošnjački">bošnjački</option>
+                         <option value="bosnjacki">bošnjački</option>
                          <option value="hrvatski">hrvatski</option>
-                         <option value="neizjašnjen" selected>neizjašnjen</option>
+                         <option value="neizjasnjen" selected>neizjašnjen</option>
                          <option value="ostalo">ostalo</option>
 
                     </select>
@@ -129,12 +129,12 @@
                    4. Vaša vjerska pripadnost:
                     <select class="vjera" name="vjera" required>
                         <option value="Pravoslavna">Pravoslavna</option>
-                        <option value="Katolička">Katolička</option>
+                        <option value="Katolicka">Katolička</option>
                         <option value="Muslimanska">Muslimanska</option>
                         <option value="Adventist">Adventist</option>
                         <option value="Agnostik">Agnostik</option>
                         <option value="Budista">Budista</option>
-                        <option value="neizjašnjen" selected>neizjašnjen</option>
+                        <option value="neizjasnjen" selected>neizjašnjen</option>
                         <option value="ostalo">ostalo</option>
 
                    </select>

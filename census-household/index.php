@@ -145,21 +145,21 @@
                          <option value="Danilovgrad">Danilovgrad</option>
                          <option value="Gusinje">Gusinje</option>
                          <option value="Herceg Novi">Herceg Novi</option>
-                         <option value="Kolašin">Kolašin</option>
+                         <option value="Kolasin">Kolašin</option>
                          <option value="Kotor">Kotor</option>
                          <option value="Mojkovac">Mojkovac</option>
-                         <option value="Nikšić">Nikšić</option>
+                         <option value="Niksic">Nikšić</option>
                          <option value="Petnjica">Petnjica</option>
                          <option value="Plav">Plav</option>
-                         <option value="Plužine">Plužine</option>
+                         <option value="Pluzine">Plužine</option>
                          <option value="Pljevlja">Pljevlja</option>
                          <option value="Podgorica" selected>Podgorica</option>
-                         <option value="Rožaje">Rožaje</option>
-                         <option value="Šavnik">Šavnik</option>
+                         <option value="Rozaje">Rožaje</option>
+                         <option value="Savnik">Šavnik</option>
                          <option value="Tivat">Tivat</option>
                          <option value="Tuzi">Tuzi</option>
                          <option value="Ulcinj">Ulcinj</option>
-                         <option value="Žabljak">Žabljak</option>
+                         <option value="Zabljak">Žabljak</option>
                     </select>
                    </div>
                    
@@ -179,7 +179,7 @@
                <div class="form-part f4">
                     4. Živite u: 
                     <select class="kuca"  name="kuca" required>
-                        <option value="kuća">Kući</option>
+                        <option value="kuca">Ku&#263;i</option>
                         <option value="stan">Stanu</option>
                    </select>
                    
@@ -209,4 +209,4 @@
 		});
 	</script>
 </body>
-</html>
+</html>	

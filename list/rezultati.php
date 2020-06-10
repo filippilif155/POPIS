@@ -143,8 +143,8 @@
         global $name_citz, $name_dom, $conn;
         $sql = "SELECT 
     {$name_dom}.opstina as Grad,
-    COUNT(CASE WHEN Pol ='Muški' then 1 ELSE NULL END) as Muski,
-    COUNT(CASE WHEN Pol ='Ženski' then 1 ELSE NULL END) as Zenski,
+    COUNT(CASE WHEN Pol ='Muski' then 1 ELSE NULL END) as Muski,
+    COUNT(CASE WHEN Pol ='Zenski' then 1 ELSE NULL END) as Zenski,
     COUNT(*) as ukupno
     FROM {$name_citz} 
     JOIN {$name_dom} ON 
@@ -179,7 +179,7 @@
     {$name_dom}.opstina as Grad,
     COUNT(CASE WHEN Nacija ='Crnogorac' then 1 ELSE NULL END) as Crnogorci,
     COUNT(CASE WHEN Nacija ='Srbin' then 1 ELSE NULL END) as Srbi,
-    COUNT(CASE WHEN Nacija ='Bošnjak' then 1 ELSE NULL END) as Bosnjaci, 
+    COUNT(CASE WHEN Nacija ='Bosnjak' then 1 ELSE NULL END) as Bosnjaci, 
     COUNT(CASE WHEN Nacija ='Albanac' then 1 ELSE NULL END) as Albanci,
     COUNT(CASE WHEN Nacija ='Musliman' then 1 ELSE NULL END) as Muslimani,
     COUNT(CASE WHEN Nacija ='Rom' then 1 ELSE NULL END) as Romi,
@@ -255,15 +255,15 @@
         global $name_citz, $name_dom, $conn;
         $sql = "SELECT 
       {$name_dom}.opstina as Grad,
-      COUNT(CASE WHEN Jezik ='crnogorski' then 1 ELSE NULL END) as crnogorski,
-      COUNT(CASE WHEN Jezik ='srpski' then 1 ELSE NULL END) as srpski,
-      COUNT(CASE WHEN Jezik ='bosanski' then 1 ELSE NULL END) as bosanski, 
-      COUNT(CASE WHEN Jezik ='albanski' then 1 ELSE NULL END) as albanski,
-      COUNT(CASE WHEN Jezik ='romski' then 1 ELSE NULL END) as romski,
-      COUNT(CASE WHEN Jezik ='bošnjački' then 1 ELSE NULL END) as bošnjački,
-      COUNT(CASE WHEN Jezik ='hrvatski' then 1 ELSE NULL END) as hrvatski,
-      COUNT(CASE WHEN Jezik ='neizjašnjeno' then 1 ELSE NULL END) as neizjašnjeno,
-      COUNT(CASE WHEN Jezik ='ostalo' then 1 ELSE NULL END) as ostalo,
+      COUNT(CASE WHEN jezik ='crnogorski' then 1 ELSE NULL END) as crnogorski,
+      COUNT(CASE WHEN jezik ='srpski' then 1 ELSE NULL END) as srpski,
+      COUNT(CASE WHEN jezik ='bosanski' then 1 ELSE NULL END) as bosanski, 
+      COUNT(CASE WHEN jezik ='albanski' then 1 ELSE NULL END) as albanski,
+      COUNT(CASE WHEN jezik ='romski' then 1 ELSE NULL END) as romski,
+      COUNT(CASE WHEN jezik ='bosnjacki' then 1 ELSE NULL END) as bosnjacki,
+      COUNT(CASE WHEN jezik ='hrvatski' then 1 ELSE NULL END) as hrvatski,
+      COUNT(CASE WHEN jezik ='neizjasnjen' then 1 ELSE NULL END) as neizjasnjeno,
+      COUNT(CASE WHEN jezik ='ostalo' then 1 ELSE NULL END) as ostalo,
       COUNT(*) as ukupno
       FROM {$name_citz} 
       JOIN {$name_dom} ON 
@@ -322,9 +322,9 @@
                     <td>\n" . round($row['bosanski'] * 100 / $row['ukupno']) . "%</td>\n
                     <td>\n" . round($row['albanski'] * 100 / $row['ukupno']) . "%</td>\n
                     <td>\n" . round($row['romski'] * 100 / $row['ukupno']) . "%</td>\n
-                    <td>\n" . round($row['bošnjački'] * 100 / $row['ukupno']) . "%</td>\n
+                    <td>\n" . round($row['bosnjacki'] * 100 / $row['ukupno']) . "%</td>\n
                     <td>\n" . round($row['hrvatski'] * 100 / $row['ukupno']) . "%</td>\n
-                    <td>\n" . round($row['neizjašnjeno'] * 100 / $row['ukupno']) . "%</td>\n
+                    <td>\n" . round($row['neizjasnjeno'] * 100 / $row['ukupno']) . "%</td>\n
                     <td>\n" . $row['ostalo'] * 100 / $row['ukupno'] . "%</td>\n
                     <td>\n" . $row['ukupno'] . " </td>\n
                     </tr>\n";
@@ -339,14 +339,14 @@
         global $name_citz, $name_dom, $conn;
         $sql = "SELECT 
           {$name_dom}.opstina as Grad,
-          COUNT(CASE WHEN Vjera ='Pravoslavna' then 1 ELSE NULL END) as Pravoslavci,
-          COUNT(CASE WHEN Vjera ='Katolička' then 1 ELSE NULL END) as Katolici,
-          COUNT(CASE WHEN Vjera ='Muslimanska' then 1 ELSE NULL END) as Muslimani, 
-          COUNT(CASE WHEN Vjera ='Adventist' then 1 ELSE NULL END) as Adventisti, 
-          COUNT(CASE WHEN Vjera ='Agnostik' then 1 ELSE NULL END) as Agnostici, 
-          COUNT(CASE WHEN Vjera ='Budista' then 1 ELSE NULL END) as Budisti, 
-          COUNT(CASE WHEN Vjera ='neizjašnjen' then 1 ELSE NULL END) as neizjašnjeni,
-          COUNT(CASE WHEN Vjera ='ostali' then 1 ELSE NULL END) as ostalo,
+          COUNT(CASE WHEN vjera ='Pravoslavna' then 1 ELSE NULL END) as Pravoslavci,
+          COUNT(CASE WHEN vjera ='Katolicka' then 1 ELSE NULL END) as Katolici,
+          COUNT(CASE WHEN vjera ='Muslimanska' then 1 ELSE NULL END) as Muslimani, 
+          COUNT(CASE WHEN vjera ='Adventist' then 1 ELSE NULL END) as Adventisti, 
+          COUNT(CASE WHEN vjera ='Agnostik' then 1 ELSE NULL END) as Agnostici, 
+          COUNT(CASE WHEN vjera ='Budista' then 1 ELSE NULL END) as Budisti, 
+          COUNT(CASE WHEN vjera ='neizjasnjen' then 1 ELSE NULL END) as neizjasnjeni,
+          COUNT(CASE WHEN vjera ='ostali' then 1 ELSE NULL END) as ostalo,
           COUNT(*) as ukupno
           FROM {$name_citz} 
           JOIN {$name_dom} ON 
@@ -404,7 +404,7 @@
                     <td>\n" . round($row['Adventisti'] * 100 / $row['ukupno']) . "%</td>\n
                     <td>\n" . round($row['Agnostici'] * 100 / $row['ukupno']) . "%</td>\n
                     <td>\n" . round($row['Budisti'] * 100 / $row['ukupno']) . "%</td>\n
-                    <td>\n" . round($row['neizjašnjeni'] * 100 / $row['ukupno']) . "%</td>\n
+                    <td>\n" . round($row['neizjasnjeni'] * 100 / $row['ukupno']) . "%</td>\n
                     <td>\n" . $row['ostalo'] * 100 / $row['ukupno'] . "%</td>\n
                     <td>\n" . $row['ukupno'] . " </td>\n
                     </tr>\n";
@@ -426,7 +426,10 @@
               GROUP by Grad;
               ";
         print "<p>STANOVNIŠTVO PREMA ZAPOSLJENJU PO OPŠTINAMA</p>\n
-                      <table border='1' class = 'blueTable'>\n";
+                      <table border='1' class = 'blueTable'>\n
+                      <th>Opština</th> \n
+                      <th>Zaposlen</th>\n
+                       <th>Nezaposlen</th>";
         if (mysqli_query($conn, $sql)) {
             $result = mysqli_query($conn, $sql);
             while ($row = mysqli_fetch_assoc($result)) {

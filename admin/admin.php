@@ -13,28 +13,28 @@
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     if ($conn) {
         $sql = "SELECT * FROM popisi WHERE status=1";
-        if(mysqli_query($conn, $sql)){
+        if(mysqli_fetch_row(mysqli_query($conn, $sql))){
             $popis = mysqli_fetch_row(mysqli_query($conn, $sql));
             $active = "disabled";
             $html_heading = "Popis je u toku!";
             $ntfc_name = $popis[0]."_obavjestenja";
             $sql = "SELECT * FROM {$ntfc_name}";
                 if(mysqli_query($conn, $sql)){
-                $list = mysqli_fetch_all(mysqli_query($conn, $sql));
+                $list = mysqli_fetch_all_alt(mysqli_query($conn, $sql));
                 for($i = 0; $i < count($list); $i++){
-                    if($list[$i][4] === 'domacinstvo'){
-                        $request = "DOMAĆINSTVO";
-                    }elseif($list[$i][4] === 'individualno'){
+                    if($list[$i]['tip_zahtjeva'] === 'domacinstvo'){
+                        $request = "DOMACINSTVO";
+                    }elseif($list[$i]['tip_zahtjeva'] === 'individualno'){
                         $request = "INDIVIDUALNO";
                     }else{
                         $request = "DRUGO";
                     }
 
                     $notifications = $notifications.'<div class="notification">
-                    <h3 class="ntfc-jmbg">'.$list[$i][0].'</h3>
+                    <h3 class="ntfc-jmbg">'.$list[$i]['jmbg'].'</h3>
                     <div class="request">'.$request.'</div>
-                    <div class="contact hidden">'.$list[$i][3].'</div>
-                    <div class="text hidden">'.$list[$i][5].'</div>
+                    <div class="contact hidden">'.$list[$i]['kontakt'].'</div>
+                    <div class="text hidden">'.$list[$i]['tekst_zahtjeva'].'</div>
                     </div>';
                 }
             }

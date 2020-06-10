@@ -1,4 +1,3 @@
-
 <?php
 session_start();
 $html_errors = "";
@@ -26,7 +25,7 @@ if(isset($_POST['jmbg']) || isset($_POST['jmbg-0'])){
                         $html_errors = "<span>Da bi radili popis stanovništva prvo morate popisati svoje domaćinstvo!</span>";
                         $hidden = "";
                     }elseif(!is_null($row[4])){
-                        $html_errors = "<span>Već ste popisani! Ukoliko je došlo do greške kontaktirajte admina klikom <a href='../contact_us/index.php'>ovdje</a></span>";
+                        $html_errors = "<span>Već ste popisani!</span>";
                         $hidden = "";
                     }else{
                         $_SESSION['jmbg'] = $jmbg;

@@ -1,8 +1,9 @@
 <?php
     session_start();
+    require '../config/config.php';
     $hidden = "hidden";
     if(isset($_POST['submit'])){ 
-        $conn = mysqli_connect('localhost', 'root', '', 'baza_popis');
+        $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         if ($conn) {
             $username = stripcslashes($_POST["user"]);
             $password = stripcslashes($_POST["pass"]);
@@ -90,4 +91,4 @@
 		});
     </script>
 </body>
-</html>
+</html>		
