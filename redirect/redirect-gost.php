@@ -1,5 +1,6 @@
 <?php 
     require '../config/config.php';
+    require '../trigger/trigger.php';
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
     if ($conn) {
         $sql = "SELECT * FROM popisi WHERE status=1";
